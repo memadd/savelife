@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+ <html>
+   <head>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Custom -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+     <title>Save Life | Request</title>
+   </head>
+  <body style="background-color: #ffcdd2">
+        <div class="row my-2">
+          <div class="col-lg-10 mx-auto">
+              <h1 class="text-center text-primary">Request Blood</h1>
+              <form action="{% url 'hospital' %}" method="post" >
+                {% csrf_token %}
+                  <div class="row my-lg-2 card">
+                      <div class="card-header bg-dark">
+                          <h5 class="text-white my-lg-auto">Request Details</h5>
+                      </div>
+                      {% include 'partials/_alerts.html' %}
+                      <div class="row card-body">
+                          
+
+                          <div class="col-lg-6">
+                            <div class="form-group">
+                              <label class="sr-only">City</label>
+                              <select name="city" class="form-control">
+                                <option selected="true" disabled="disabled">City (All)</option>
+                                {% for key,value in city_choices.items %}
+                                
+                                <option value="{{key}}" 
+                                {% if key == values.city %}
+                                selected
+                                {% endif %}
+                                >{{value}}</option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                          
+                          <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="sr-only">Blood Type</label>
+                                <select name="type" class="form-control">
+                                  <option selected="true" disabled="disabled">Blood Type</option>
+                                  {% for key,value in blood_choices.items %}
+                                  
+                                  <option value="{{key}}" 
+                                  {% if key == values.type %}
+                                  selected
+                                  {% endif %}
+                                  >{{value}}</option>
+                                  {% endfor %}
+                                </select>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="sr-only">Patient Status</label>
+                                <select name="status" class="form-control">
+                                  <option selected="true" disabled="disabled">Patient Status</option>
+                                  {% for key,value in status_choices.items %}
+                                  
+                                  <option value="{{key}}" 
+                                  {% if key == values.status %}
+                                  selected
+                                  {% endif %}
+                                  >{{value}}</option>
+                                  {% endfor %}
+                                </select>
+                            </div>
+                          </div>
+                        
+
+          
+                        </div>
+                        
+                      
+                  </div>
+                  <hr>
+                  <input type="submit" value="Request" class="btn btn-block btn-secondary">
+              </form>
+             
+          </div>
+      </div>
+
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/lightbox.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

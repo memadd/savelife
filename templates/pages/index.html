@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  | Home
+{% endblock %}
+{% block content %}
+{% load static %}
+
+    <nav class="nav-extended">
+        <div class="nav-wrapper">
+          <img class="brand-logo" src="{% static 'img/logofff.png' %}"/>
+        </div>
+      </nav>
+      <div align = center>
+        <h2>Who Are You?</h2>
+             <!-- Alerts -->
+  {% include 'partials/_alerts.html' %}
+      </div>
+ 
+
+      <div>
+        <a href="{% url 'register' %}"><img style="padding-top:100px; padding-left:300px;" src="{% static 'img/donors.png' %}" alt="DONOR"></a>
+        <a href="{% url 'hospital' %}"><img style="padding-top:100px; padding-left:250px;" src="{% static 'img/hospital.png' %}" alt="DONOR"></a>
+      </div>
+      <div style="padding-left:300px; padding-top:30px; padding-right:300px;">
+        <label style="font-size: 300%">DONOR</label>
+        <label style="font-size: 300%; padding-left:275px; padding-top:30px">HOSPITAL</label>
+      </div>
+
+      
+
+
+{% endblock %}
